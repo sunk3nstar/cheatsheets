@@ -22,58 +22,58 @@ $\mathcal{P}(\{\emptyset\})=\{\emptyset,\{\emptyset\}\}$\\
 $\mathcal{P}(\mathcal{P}(\mathcal{P}(\emptyset)))=\{\emptyset,\{\emptyset\},\{\{\emptyset\}\},\{\emptyset,\{\emptyset\}\}\}$
 \subsection*{Hassediagramm}
 \begin{wrapfigure}[9]{r}{.46\linewidth}
-\vspace{-20pt}
-\hspace{-0pt}
-\begin{tikzpicture}[scale=0.4]
-  \node (max) at (0,4) {$\{x,y,z\}$};
-  \node (a) at (-2,2) {$\{x,y\}$};
-  \node (b) at (0,2) {$\{x,z\}$};
-  \node (c) at (2,2) {$\{y,z\}$};
-  \node (d) at (-2,0) {$\{x\}$};
-  \node (e) at (0,0) {$\{y\}$};
-  \node (f) at (2,0) {$\{z\}$};
-  \node (min) at (0,-2) {$\emptyset$};
-  \draw (min) -- (d) -- (a) -- (max) -- (b) -- (f)
-  (e) -- (min) -- (f) -- (c) -- (max)
-  (d) -- (b);
-  \draw[preaction={draw=white, -,line width=6pt}] (a) -- (e) -- (c);
-\end{tikzpicture}
+	\vspace{-20pt}
+	\hspace{-0pt}
+	\begin{tikzpicture}[scale=0.4]
+		\node (max) at (0,4) {$\{x,y,z\}$};
+		\node (a) at (-2,2) {$\{x,y\}$};
+		\node (b) at (0,2) {$\{x,z\}$};
+		\node (c) at (2,2) {$\{y,z\}$};
+		\node (d) at (-2,0) {$\{x\}$};
+		\node (e) at (0,0) {$\{y\}$};
+		\node (f) at (2,0) {$\{z\}$};
+		\node (min) at (0,-2) {$\emptyset$};
+		\draw (min) -- (d) -- (a) -- (max) -- (b) -- (f)
+		(e) -- (min) -- (f) -- (c) -- (max)
+		(d) -- (b);
+		\draw[preaction={draw=white, -,line width=6pt}] (a) -- (e) -- (c);
+	\end{tikzpicture}
 \end{wrapfigure}
 Man kann die Inklusionsbeziehungen aller Teilmengen in Form eines Hasse-Diagramms veranschaulichen. Das Hasse-Diagramm für $\mathcal{P}(\{x,y,z\})$ lässt sich dann wie folgt darstellen:
 \subsection*{Venn-Diagramm}
 \begin{tikzpicture}[scale=.45]
-    \begin{scope}
-        \clip \firstcircle;
-        \fill[filled] \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle node {$A$};
-    \draw[outline] \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+	\begin{scope}
+		\clip \firstcircle;
+		\fill[filled] \secondcircle;
+	\end{scope}
+	\draw[outline] \firstcircle node {$A$};
+	\draw[outline] \secondcircle node {$B$};
+	\node[anchor=south] at (current bounding box.north) {$A \cap B$};
 \end{tikzpicture}
 %Set A or B but not (A and B) also known a A xor B
 \begin{tikzpicture}[scale=.45]
-\hspace{-.5cm}
-    \draw[filled, even odd rule] \firstcircle node {$A$}
-                                 \secondcircle node{$B$};
-    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+	\hspace{-.5cm}
+	\draw[filled, even odd rule] \firstcircle node {$A$}
+	\secondcircle node{$B$};
+	\node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
 \end{tikzpicture}
 % Set A or B
 \begin{tikzpicture}[scale=.45]
-    \draw[filled] \firstcircle node {$A$}
-                  \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+	\draw[filled] \firstcircle node {$A$}
+	\secondcircle node {$B$};
+	\node[anchor=south] at (current bounding box.north) {$A \cup B$};
 \end{tikzpicture}
 % Set A but not B
 \hspace{.5cm}
 \begin{tikzpicture}[scale=.45]
-    \begin{scope}
-        \clip \firstcircle;
-        \draw[filled, even odd rule] \firstcircle node {$A$}
-                                     \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle
-                   \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
+	\begin{scope}
+		\clip \firstcircle;
+		\draw[filled, even odd rule] \firstcircle node {$A$}
+		\secondcircle;
+	\end{scope}
+	\draw[outline] \firstcircle
+	\secondcircle node {$B$};
+	\node[anchor=south] at (current bounding box.north) {$A\setminus B$};
 \end{tikzpicture}
 \subsection*{Operationen auf Mengenfamilien}
 Sei $\mathcal{F}=\{\{1,2,3,4\},\{3,4,5,6\}\}$ Mengenfamilie.
@@ -83,7 +83,7 @@ Durchschnitt aller Mengen aus $\mathcal{F}$:\\
 $\bigcap\mathcal{F}=\{3,4\}$
 \subsection*{Kartesisches Produkt}
 Seien $A,B$ Mengen, dann ist das kartesische Produkt (Kreuzprodukt)
-von $A$ und $B$ definiert als: $A\times B:=\{(a,b)\mid a\in A\wedge b\in B\}$. 
+von $A$ und $B$ definiert als: $A\times B:=\{(a,b)\mid a\in A\wedge b\in B\}$.
 $A\times B$ ist die Menge aller geordneten Paare von $A$ und $B$.\\
 \emph{Hinweis:}\\
 $(a,b)=(c,d)\Leftrightarrow a=c\wedge b=d$\\

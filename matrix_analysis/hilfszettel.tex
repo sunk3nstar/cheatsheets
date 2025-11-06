@@ -1,6 +1,6 @@
-\documentclass[10pt,landscape,a4paper]{article}
+\documentclass[10pt,landscape,a4paper]{ctexart}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[latin]{babel}
 \usepackage[T1]{fontenc}
 %\usepackage[LY1,T1]{fontenc}
 %\usepackage{frutigernext}
@@ -15,6 +15,7 @@
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{microtype}
 \usepackage{pdfpages}
+\usepackage{lipsum}
 
 \let\bar\overline
 
@@ -24,14 +25,15 @@
 %\footnotesize
 \small
 \begin{multicols*}{5}
-\input{inhalt/aussagen}
-\input{inhalt/mengen}
-\input{inhalt/relationen}
-\input{inhalt/abbildungen}
-%\input{inhalt/beweise} 
-\input{inhalt/graphen}
-%\input{inhalt/graphalgo}
-%\input{inhalt/bool}
-%\input{inhalt/formeln}
+	% \input{inhalt/aussagen}
+	% \input{inhalt/mengen}
+	% \input{inhalt/relationen}
+	% \input{inhalt/abbildungen}
+	%\input{inhalt/beweise}
+	% \input{inhalt/graphen}
+	%\input{inhalt/graphalgo}
+	%\input{inhalt/bool}
+	%\input{inhalt/formeln}
+	\input{inhalt/canonical}
 \end{multicols*}
 \end{document}
