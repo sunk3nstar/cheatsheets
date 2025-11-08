@@ -1,16 +1,71 @@
 \section{矩阵分解}
 \subsection*{Schur}
-$A=U^{H}TU$，当$A^{H}A=AA^{H}$（正规）时有$A=U^{H}diagU$。
+方阵$A=UTU^{H}$，当$A^{H}A=AA^{H}$（正规）时有$A=U\Lambda U^{H}$。
 标准型对角线元素为$A$全部特征值。证明基本思路为取单位特征向量构造酉阵，此后计算并归纳。
 \subsection*{Jordan}
-$A=P^{-1}JP$，算法为：
+方阵$A=PJP^{-1}$，算法为:
+\begin{enumerate}
+	\item 求$A$的特征多项式，得到特征值
+	\item 求$A$的最小多项式$\prod (\lambda_i - A)^{\beta_i}$，$\beta_i$为$\lambda_i$对应最大Jordan块大小
+	\item 对于每个特征值，求$rank((\lambda_i I - A)^k)$，$k=1\dots\beta_i$。计算$n_k=nullity(\lambda_i I - A)^k$，
+	      $n_1$为属于$\lambda_i$的Jordan块总数，$n_{k+1}-n_{k}$为尺寸不小于$k$的Jordan块个数。
+	      原因是$(\lambda I - J)^i$与$(\lambda I - A)^i$相似，秩相等，而对于$(\lambda I - J)$每自乘一次，当前幂次阶以上的Jordan块就会多一个全零行。
+	\item 求变换矩阵$P$
+\end{enumerate}
 \subsection*{SVD}
-$A=U^{T}\Sigma{V}$，其中$\Sigma=$，奇异值$\sigma_i=\sqrt{\lambda_i}$
+$A^{m\times n}=U_{m}\left( \begin{smallmatrix}\Sigma^{r\times r}&O\\O&O\end{smallmatrix}\right)V_n^H,\Sigma=\left(\begin{smallmatrix}\sigma_1&&\\ & \ddots & \\ && \sigma_r\end{smallmatrix}\right) $，
+奇异值$\sigma_i=\sqrt{\lambda_i}\neq0$，$\lambda_i$是$A^HA$的非零特征值，编号根据值降序排列。
+证明时先构造$V$，由于$A^HA$正规，Schur得$V^HA^HAV=diag(\Sigma^2,O_{n-r})$。
+竖切$V=(V_1^{n\times r},V_2^{n\times (n-r)})$，代入Schur计算有$V_1,V_2$与$A,\Sigma$的关系。
+取$U_1^{m\times r}=AV_1\Sigma^{-1}$，满足$U^{H}_1U_1=I_r$，因此$U_1$各列向量标准正交。
+将$U_1$增补为$U^{m\times m}$即为所需的$U$，可代入SVD分解式验证。
+\subsection*{极分解}
+方阵$A = P\tilde{U}$，其中
 \subsection*{满秩分解}
 \subsection*{QR分解}
 
 \section{矩阵分解相关}
-\subsection*{Carley-Hamilton定理}
 \subsection*{Sylvester降幂公式}
+对于$A\in \mathbb{C}^{m\times n},B\in \mathbb{C}^{n\times m},m\geq n$，有
+$\det(\lambda I_m-AB)=\lambda^{m-n}\det(\lambda I_n-BA)$。
+结合满秩分解可以用于降阶计算高阶特征多项式。
+证明需要注意到\[
+	\begin{aligned}
+		\left(
+		\begin{smallmatrix}
+			I & B \\ O & I
+		\end{smallmatrix}
+		\right)\left(
+		\begin{smallmatrix}
+			O & O \\ A & AB
+		\end{smallmatrix}\right)
+		 & =\left(
+		\begin{smallmatrix}
+			BA & BAB \\ A & AB
+		\end{smallmatrix}\right) \\
+		 & =\left(
+		\begin{smallmatrix}
+			BA & O \\ A & O
+		\end{smallmatrix}\right)\left(
+		\begin{smallmatrix}
+			I & B \\ O & I
+		\end{smallmatrix}\right)
+	\end{aligned}
+\]再计算由此导出相似矩阵的特征多项式。
+\subsection*{Carley-Hamilton定理}
+对于$n$阶方阵A，其特征多项式$p(\lambda)=\det(\lambda I - A)$是它的一个零化多项式。
+使用Schur或Jordan将$A$化为上三角矩阵后计算可证。
 \subsection*{最小多项式}
+次数最低的首一零化多项式。是所有零化多项式的因子，这一点可使用多项式整除求余证明。
+\subsection*{广义特征向量}
 \subsection*{典型正规矩阵}
+\subsection*{奇异向量}
+SVD变形有$AV=U\left(\begin{smallmatrix}\Sigma & O \\ O & O\end{smallmatrix}\right)$，
+竖切$U=(\eta_1\dots\eta_m),V=(\xi_1\dots\xi_n)$后展开计算，
+% $A(\xi_1\dots\xi_n)=(\eta_1\dots\eta_m)\left(\begin{smallmatrix}\Sigma & O \\ O & O\end{smallmatrix}\right)$。
+于是$A\xi_i=\eta_i\sigma_i,1\leq i\leq r$，称$\xi_i$为右奇异向量，$\eta_i$为左奇异向量。
+此外$A\xi_i=O,r\leq i\leq n$。
+\subsection*{基于SVD的矩阵压缩}
+对SVD分解式竖切$U$，横切$V^H$有
+$A=(\eta_1\dots\eta_m)\left(\begin{smallmatrix}\Sigma & O \\ O & O\end{smallmatrix}\right)(\xi_1^H\dots\xi_n^H)^T$，
+展开得$A=\textstyle\sum\limits_{i=1}^{r}\eta_i\sigma_i\xi_i^H$，故大奇异值项占主要成分。

@@ -16,9 +16,23 @@
 \everydisplay\expandafter{\the\everydisplay \color{myblue}}
 
 \renewcommand{\baselinestretch}{.9}
+
 \pagestyle{empty}
 
-
+\setlist[enumerate]{
+	leftmargin=*,
+	labelsep=0.2em,
+	listparindent=0pt,
+	parsep=0pt
+}
+\settasks{
+	label             = (\arabic*),
+	label-width       = 1.2em,
+	label-offset      = .2em,
+	column-sep        = 1.2em,
+	before-skip       = \smallskipamount,
+	after-skip        = \smallskipamount
+}
 \makeatletter
 \renewcommand{\section}{\@startsection{section}{1}{0mm}%
 	{.4ex}%
