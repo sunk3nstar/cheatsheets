@@ -1,4 +1,15 @@
 \section{线性代数工具}
 \subsection*{矩阵求逆}
+$\det(A)A^{-1}=A^{*}=((-1)^{i+j}a_{ji})$
 \subsection*{Schmidt正交化}
+$y_1=x_1$，令$y_2=x_2+\lambda_{21} y_1, \langle y_2,y_1 \rangle =0$求解$y_2$，
+$y_3=x_3+\lambda_{31} y_1 + \lambda_{32} y_2, \langle y_3,y_1 \rangle = \langle y_3,y_2\rangle =0$求解$y_3$，以此类推。
 \subsection*{Vandemonde行列式}
+$\det\left(\begin{smallmatrix}
+			1 & x_1 & x_1^{2} & \cdots & x_1^{n-1}\\[4pt]
+			1 & x_2 & x_2^{2} & \cdots & x_2^{n-1}\\[4pt]
+			1 & x_3 & x_3^{2} & \cdots & x_3^{n-1}\\[4pt]
+			\vdots & \vdots & \vdots & \ddots & \vdots\\[4pt]
+			1 & x_n & x_n^{2} & \cdots & x_n^{n-1}
+		\end{smallmatrix}\right)
+	=\prod_{1\le i<j\le n}(x_j-x_i)$

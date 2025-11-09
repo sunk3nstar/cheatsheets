@@ -2,6 +2,7 @@
 \subsection*{Schur}
 方阵$A=UTU^{H}$，当$A^{H}A=AA^{H}$（正规）时有$A=U\Lambda U^{H}$。
 标准型对角线元素为$A$全部特征值。证明基本思路为取单位特征向量构造酉阵，此后计算并归纳。
+正规矩阵的Schur求法：求出所有特征向量并标准正交化得到$U$。
 \subsection*{Jordan}
 方阵$A=PJP^{-1}$，算法为:
 \begin{enumerate}
@@ -18,11 +19,19 @@ $A^{m\times n}=U_{m}\left( \begin{smallmatrix}\Sigma^{r\times r}&O\\O&O\end{smal
 证明时先构造$V$，由于$A^HA$正规，Schur得$V^HA^HAV=diag(\Sigma^2,O_{n-r})$。
 竖切$V=(V_1^{n\times r},V_2^{n\times (n-r)})$，代入Schur计算有$V_1,V_2$与$A,\Sigma$的关系。
 取$U_1^{m\times r}=AV_1\Sigma^{-1}$，满足$U^{H}_1U_1=I_r$，因此$U_1$各列向量标准正交。
-将$U_1$增补为$U^{m\times m}$即为所需的$U$，可代入SVD分解式验证。
+将$U_1$增补为$U^{m\times m}$即为所需的$U$，可代入SVD验证。
 \subsection*{极分解}
-方阵$A = P\tilde{U}$，其中
+方阵$A = P\tilde{U} = U\tilde{Q}$，
+其中$P,Q$Hermite半正定。从SVD开始配凑中间的$I$为酉阵与其共轭转置乘积得到。
+一阶时为$x=re^{i\theta}$。
 \subsection*{满秩分解}
 \subsection*{QR分解}
+\subsection*{LR分解}
+$A=P\left(\begin{smallmatrix}
+			I_r&O\\O&O
+		\end{smallmatrix}
+	\right)Q=P\left(\begin{smallmatrix} I_r\\ O \end{smallmatrix} \right)\left(\begin{smallmatrix} I & O \end{smallmatrix} \right)
+	Q=LR$
 
 \section{矩阵分解相关}
 \subsection*{Sylvester降幂公式}
@@ -58,6 +67,9 @@ $\det(\lambda I_m-AB)=\lambda^{m-n}\det(\lambda I_n-BA)$。
 \subsection*{最小多项式}
 次数最低的首一零化多项式。是所有零化多项式的因子，这一点可使用多项式整除求余证明。
 \subsection*{广义特征向量}
+\subsection*{相似对角化}
+方阵可相似对角化等价于其特征向量线性无关，因为$P^{-1}AP=\Lambda,AP=P\Lambda$，
+根据特征值定义可证明；亦等价于最小多项式无重根，因为最大Jordan块大小为1。
 \subsection*{典型正规矩阵}
 \subsection*{奇异向量}
 SVD变形有$AV=U\left(\begin{smallmatrix}\Sigma & O \\ O & O\end{smallmatrix}\right)$，
