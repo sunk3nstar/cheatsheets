@@ -1,0 +1,24 @@
+\section{矩阵方程}
+\subsection*{方程的有解性}
+\subsection*{解的唯一性}
+\subsection*{左逆、右逆}
+\subsection*{同解变换}
+\subsection*{广义逆（m-p逆，伪逆）}
+$G=A^\dagger$满足
+\begin{tasks}(2)
+	\task $AGA=A$
+	\task $GAG=G$
+	\task $(AG)^H=AG$
+	\task $(GA)^H=GA$
+\end{tasks}
+满足第$i,j,\dots$条记作$A^{\{i,j,\dots\}}$。
+使用SVD可得到$A=Q\begin{psmallmatrix}
+		\Sigma_r&0\\0&0
+	\end{psmallmatrix} P^{-1}$，$A^\dagger=P\begin{psmallmatrix}
+		\Sigma_r^{-1}&0\\0&0
+	\end{psmallmatrix} $
+\subsection*{广义逆的满秩分解算法}
+设满秩分解$A^{m\times n}=F^{m\times r}G^{r\times n}$，
+则$A^{\dagger}=G^H(GG^H)^{-1}(F^HF)^{-1}F^{H}$，正确性通过代入定义验证。
+\subsection*{最小二乘解}
+\subsection*{最小范数解}

@@ -13,7 +13,7 @@
 	\item 对于每个特征值，求$rank((\lambda_i I - A)^k)$，$k=1\dots\beta_i$。计算$n_k=nullity(\lambda_i I - A)^k$，
 	      $n_1$为属于$\lambda_i$的Jordan块总数，$n_{k+1}-n_{k}$为尺寸不小于$k$的Jordan块个数。
 	      原因是$(\lambda I - J)^i$与$(\lambda I - A)^i$相似，秩相等，而对于$(\lambda I - J)$每自乘一次，当前幂次阶以上的Jordan块就会多一个全零行。
-	\item 求变换矩阵$P$
+	\item 求变换矩阵$P$。变形为$AP=PJ$后可列出$P$各列向量满足的方程。
 \end{enumerate}
 \subsection*{SVD}
 $A^{m\times n}=U_{m}\left( \begin{smallmatrix}\Sigma^{r\times r}&O\\O&O\end{smallmatrix}\right)V_n^H,\Sigma=\left(\begin{smallmatrix}\sigma_1&&\\ & \ddots & \\ && \sigma_r\end{smallmatrix}\right) $，
@@ -27,6 +27,10 @@ $A^{m\times n}=U_{m}\left( \begin{smallmatrix}\Sigma^{r\times r}&O\\O&O\end{smal
 其中$P,Q$Hermite半正定。从SVD开始配凑中间的$I$为酉阵与其共轭转置乘积得到。
 一阶时为$x=re^{i\theta}$。
 \subsection*{满秩分解}
+注意到$A$中线性相关的情况后直接列写。
+如$A=(\alpha_1,\alpha_2,\alpha_1+\alpha_2)=(\alpha_1,\alpha_2)\begin{psmallmatrix}
+		1&0&1\\0&1&1
+	\end{psmallmatrix} $
 \subsection*{LR分解}
 $A=P\left(\begin{smallmatrix}
 			I_r&O\\O&O
@@ -68,6 +72,10 @@ $\det(\lambda I_m-AB)=\lambda^{m-n}\det(\lambda I_n-BA)$。
 \subsection*{最小多项式}
 次数最低的首一零化多项式。是所有零化多项式的因子，这一点可使用多项式整除求余证明。
 \subsection*{广义特征向量}
+$(A-\lambda I)^k\xi=0,(A-\lambda I)^{k-1}\xi\neq 0$
+则称$\xi$为$A$深度为$k$的广义特征向量。
+令$\xi_i=(A-\lambda I)^{k-i}$，那么有
+$(A-\lambda I)^{n\times n}(\xi_1\dots x_k)^{n\times k}=(\xi_1\dots x_k)^{n\times k}J_{\lambda=0}^{k\times k}$
 \subsection*{相似对角化}
 方阵可相似对角化等价于其特征向量线性无关，因为$P^{-1}AP=\Lambda,AP=P\Lambda$，
 根据特征值定义可证明；亦等价于最小多项式无重根，因为最大Jordan块大小为1。

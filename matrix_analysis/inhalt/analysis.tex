@@ -1,0 +1,25 @@
+\section{方阵的级数与函数}
+\subsection*{方阵级数}
+$\textstyle\sum\limits_{k=0}^{\infty}A^k$收敛等价于$\lim\limits_{k\to\infty}A^k=0$，此时
+$\textstyle\sum\limits_{k=0}^{\infty}A^k=(1-A)^{-1}$。
+设$f(z)=\textstyle\sum\limits_{k=0}^{\infty}a_kz^k$收敛半径为$R$，$\rho(A)<R$时$f(A)$有意义。
+\subsection*{$f(A)$的计算方法}
+理论上：将Jordan块拆为$\lambda I+N$，使用二项式定理展开计算一个$Jordan$块的级数，因为$N$幂零项数很少。
+对$A$进行Jordan分解，每个Jordan块都能求出级数，故可得到$f(A)$。\\
+实际中使用零化多项式$m(x)$插值计算：令$f(x)=q(x)m(x)+r(x)$，余项次数低于$m(x)$，故可待定系数将其设出；
+此后代入$m(x)$零点可解出$r(x)$，于是将$A$代入即得。若有重根应求导造出足量方程。
+\subsection*{常见级数}
+\begin{enumerate}
+	\item $ e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!}, R = \infty $
+	\item $ \cos A = \sum_{k=0}^{\infty} (-1)^k \frac{A^{2k}}{(2k)!}, R = \infty $
+	\item $ \sin A = \sum_{k=0}^{\infty} (-1)^k \frac{A^{2k+1}}{(2k+1)!}, R = \infty $
+	\item $ \ln(I + A) = \sum_{k=1}^{\infty} (-1)^{k+1} \frac{A^k}{k}, R = 1 $
+	\item $ (1 + A)^\alpha = \sum_{k=0}^{\infty} \binom{\alpha}{k} A^k, R = 1 $
+\end{enumerate}
+\subsection*{$e^A$的性质}
+\begin{enumerate}
+	\item $\det(e^A)=e^{trA}$，对A做Jordan可证。
+	\item $e^{iA}=\cos(A)+i\sin(A)$，若$A$是实矩阵可通过计算实部和虚部计算$\cos(A)$和$\sin(A)$。
+	\item $A^T=-A\Rightarrow (e^A)^{-1}=(e^A)^T$（第一类正交阵），因为$e^{A+A^T}=I$。
+	\item $A^H=-A\Rightarrow (e^A)^{-1}=(e^A)^H$（酉）。
+\end{enumerate}
