@@ -38,4 +38,64 @@ $\left(\begin{smallmatrix}
 时
 $\langle,\rangle$为内积，$\langle V,+,\cdot,\langle,\rangle \rangle$为内积空间。
 注意
-$\langle\beta_1 k_1 +\beta_2 k_2, \alpha\rangle = \langle\beta_1 \alpha\rangle \overline{k_1}+\langle\beta_2 \alpha\rangle \overline{k_2}$。
+$\langle\beta_1 k_1 +\beta_2 k_2, \alpha\rangle = \langle\beta_1, \alpha\rangle \overline{k_1}+\langle\beta_2, \alpha\rangle \overline{k_2}$。
+\subsection*{内积示例}
+复列向量内积$\langle x,y\rangle=y^Hx$，方阵的Frobenius内积$\langle A,B\rangle=tr(A^HB)=\sum_i\sum_j\overline{a_{ij}}b_{ij}$。
+\subsection*{Gram矩阵（度量矩阵）}
+$G=(\langle \alpha_i,\alpha_j\rangle)$是基$(\alpha_i)$的度量矩阵。满足Hermite对称$G^H=G$，Hermite半正定$x^HGx\geq 0$。
+使用$P$将基$(\alpha_i)$变换为$(\alpha_i')$后，后者的度量矩阵$G'=P^HGP$。计算$\langle \alpha_i',\alpha_j' \rangle$即得。
+
+\subsection*{子空间}
+若$W$是$F$上线性空间$V$的非空子集且
+\begin{enumerate}
+	\item $\forall \alpha+\beta\in W,\alpha+\beta\in W$
+	\item $\forall \alpha \in W, k\in F, \alpha k\in W$
+\end{enumerate}
+则称$W$是$V$中的一个线性子空间（线性可通过定义验证），记作$W\leq V$
+最小的子空间是${\theta}$。
+\subsection*{生成子空间}
+任取$V$中非空子集$S$，其所有线性组合组成生成子空间$W=span S$，
+这是$V$中包含$S$中全部元素的最小子空间。$V$是它的基的生成子空间。
+\subsection*{子空间的和}
+$W_1+W_2=\{ \alpha_1+\alpha_2 | \alpha_1\in W_1, \alpha_2\in W_2 \}\subseteq V$，
+子空间的并是和的子集但不是线性空间因此不是子空间。
+\subsection*{维数公式}
+$dim(W_1)+dim(W_2)=dim(W_1+W_2)+dim(W_1\cap W_2)$，类似容斥原理。
+\subsection*{直和分解}
+若$W_1+W_2=V,W_1\cap W_2=\{\theta\}$则$V=W_1\oplus W_2$（直和）。
+等价于$\theta=\alpha_1\in W_1+\alpha_2\in W_2$当且仅当$\alpha_1=\alpha_2=\theta$，
+证明思路是假设有两种分解后反证。$W_1$和$W_2$的基的并是$V$的一组基，因为$W_1$的基和$W_2$的基线性无关。
+若给定$V$的一个子空间，可通过求基的方式构造出与其直和得到$V$的另一个子空间。
+
+\subsection*{线性映射}
+线性映射$\varphi:V_1\rightarrow V_2$满足
+\begin{enumerate}
+	\item $\varphi(\alpha+\beta)=\varphi(\alpha)+\varphi(\beta)$
+	\item $\varphi(\alpha\cdot k)=\varphi(\alpha)\cdot k$
+\end{enumerate}
+或写作$\varphi((\alpha_i)^T(k_i))=\varphi(\alpha_1\dots\alpha_n)(k_i)$。\\
+$V_1=V_2=V$时称线性自映射(线性算子)。
+\subsection*{线性映射的矩阵表示}
+$\varphi:V_1\rightarrow V_2$，对于$V_1$的基$\alpha$和$V_2$的基$\beta$有
+$\varphi(\alpha_1\dots\alpha_n)=(T(\alpha_i))=(\alpha_1\dots\alpha_n)A=(\beta_1\dots\beta_n)$
+\subsection*{矩阵转换}
+令$\varphi:V_1\rightarrow V_2$，$V_1$下基$\alpha$到$\alpha'$的过渡矩阵$P$，
+$V_2$下基$\beta$到$\beta'$的过渡矩阵$Q$，
+$\varphi$由$\alpha$变换为$\beta$时矩阵表示为$A$，由$\alpha'$变换为$\beta'$时矩阵表示为$B$。
+计算可知$AP=QB,B=Q^{-1}AP$。
+对于线性算子，取$\alpha=\beta,Q=P$即得到相似。
+\subsection*{核}
+$kernel\varphi=\{\alpha\in V_1|\varphi(\alpha=\theta_{V_2})\}\leq V_1$
+要证子空间只需验证线性。$kernel\varphi=\{\theta_{V_1}\}$对应单射（不会有两个元素被映射到同一个元素，反证得到）。
+\subsection*{像}
+$image\varphi=\{\varphi(\alpha)|\alpha\in V_1)\}\leq V_2$
+要证子空间只需验证线性。$image\varphi=V_2$对应满射。
+\subsection*{正交补}
+$W\leq V$，$W$的正交补$W^{\perp}=\{\beta\in V|\forall\alpha\in W,\langle\alpha,\beta\rangle=0 \}\leq V$。
+满足$W+W^{\perp}=V$，因为将$W$的基扩充为$V$的基时新增基的生成子空间可证明与$W^{\perp}$互相包含。
+$W\cap W^{\perp}=\{0\}$，故$W\oplus W^{\perp}=V$，由维数公式可知它们维数之和为$dimV$。
+\subsection*{保内积算子和酉阵}
+$\varphi:V\rightarrow V$满足$\langle\varphi(\alpha), \varphi(\beta)\rangle=\langle\alpha,\beta\rangle$则称为保内积算子。
+取标准正交基代入定义计算，可知其变换矩阵$U^TU=I$为酉矩阵。
+计算两组标准正交基的Gram矩阵后可得到它们的过渡矩阵是酉矩阵。
+酉矩阵的各列向量组成一组标准正交基。

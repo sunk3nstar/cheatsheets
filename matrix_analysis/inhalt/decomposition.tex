@@ -3,6 +3,8 @@
 方阵$A=UTU^{H}$，当$A^{H}A=AA^{H}$（正规）时有$A=U\Lambda U^{H}$。
 标准型对角线元素为$A$全部特征值。证明基本思路为取单位特征向量构造酉阵，此后计算并归纳。
 正规矩阵的Schur求法：求出所有特征向量并标准正交化得到$U$。
+\subsection*{谱分解}
+竖切正规矩阵Schur分解的$U$阵得到$A=(\xi_i)\Lambda(\overline{\xi_i})^T=\sum\xi_i\lambda_i\overline{\xi_i}$。
 \subsection*{Jordan}
 方阵$A=PJP^{-1}$，算法为:
 \begin{enumerate}
@@ -25,7 +27,6 @@ $A^{m\times n}=U_{m}\left( \begin{smallmatrix}\Sigma^{r\times r}&O\\O&O\end{smal
 其中$P,Q$Hermite半正定。从SVD开始配凑中间的$I$为酉阵与其共轭转置乘积得到。
 一阶时为$x=re^{i\theta}$。
 \subsection*{满秩分解}
-\subsection*{QR分解}
 \subsection*{LR分解}
 $A=P\left(\begin{smallmatrix}
 			I_r&O\\O&O

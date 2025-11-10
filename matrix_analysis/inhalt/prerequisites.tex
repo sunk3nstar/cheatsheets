@@ -1,4 +1,4 @@
-\section{线性代数工具}
+\section{前置知识}
 \subsection*{矩阵求逆}
 $\det(A)A^{-1}=A^{*}=((-1)^{i+j}a_{ji})$
 \subsection*{Schmidt正交化}
@@ -13,3 +13,8 @@ $\det\left(\begin{smallmatrix}
 			1 & x_n & x_n^{2} & \cdots & x_n^{n-1}
 		\end{smallmatrix}\right)
 	=\prod_{1\le i<j\le n}(x_j-x_i)$
+\subsection*{矩阵乘法的一些特性}
+\begin{enumerate}
+	\item $(\beta^T a_{ij} \alpha)=\beta^T A \alpha$
+	\item $\textstyle\sum\limits_{k_1=1}^{n}\textstyle\sum\limits_{k_2=1}^{n}c_{ij}\beta_{k_1}\alpha_{k_2}=\beta^T C \alpha$
+\end{enumerate}

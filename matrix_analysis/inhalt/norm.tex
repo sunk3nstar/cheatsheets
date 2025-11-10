@@ -1,0 +1,64 @@
+\section{范数理论}
+\subsection*{线性空间V上的范数}
+设$V$为$F$上的线性空间，若映射$\norm{\cdot}:V\rightarrow \mathbb{R}$
+满足\begin{enumerate}
+	\item $\norm{v}\geq 0,\norm{v}=0\iff v=\theta$
+	\item $\norm{v\lambda}=\norm{v}|\lambda|$
+	\item $\norm{v_1+v_2}\leq\norm{v_1}+\norm{v_2}$
+\end{enumerate}
+则称$\norm{\cdot}$为$V$上的一个$F$范数，$\{V,\norm{\cdot}\}$为赋范线性空间。
+$d(v_1,v_2)=\norm{v_1-v_2}$称作$v_1,v_2$的距离，$\{V,d\}$为度量线性空间。
+$d(v_1,v_3)=\norm{v_1-v_2+v_2-v_3}\leq d(v_1,v_2)+d(v_2,v_3)$。
+\subsection*{内积诱导范数}
+$\norm{v}=\sqrt{\langle v,v \rangle}$。对于
+$\forall \alpha,\beta\in V$有$\iproduct{\alpha+\beta,\alpha+\beta}=\iproduct{\alpha,\alpha}+\iproduct{\alpha,\beta}+\iproduct{\beta,\alpha}+\iproduct{\beta,\beta}$，
+$\iproduct{\alpha-\beta,\alpha-\beta}=\iproduct{\alpha,\alpha}-\iproduct{\alpha,\beta}-\iproduct{\beta,\alpha}+\iproduct{\beta,\beta}$，
+两式相加得到$\norm{\alpha+\beta}^2+\norm{\alpha-\beta}^2=2\norm{\alpha}^2+2\norm{\beta}^2$。
+\subsection*{勾股定理和Cauchy不等式}
+对于内积诱导范数，展开计算可证明
+\begin{enumerate}
+	\item $\alpha\perp\beta\iff \norm{\alpha+\beta}=\norm{\alpha}+\norm{\beta}$。
+	\item $\iproduct{\alpha,\beta}\iproduct{\beta,\alpha}=|\iproduct{\alpha,\beta}|\leq\norm{\alpha}^2\norm{\beta}^2$
+\end{enumerate}
+Cauchy不等式在$\alpha\neq\theta$时显然成立；其他情况构造$\alpha\perp\gamma=\beta-\alpha k$可证明，且当且仅当$\alpha$与$\beta$线性相关时等号成立。
+$\alpha$和$\beta$的夹角满足$\iproduct{\alpha,\beta}=\norm{\alpha}\norm{\beta}\cos\lambda$。
+\subsection*{列向量上的p-范数}
+对于列向量$v$，$\norm{v}_p=(\sum|x_i|^p)^{\frac1p}$：
+\begin{enumerate}
+	\item $p=1:\sum|x_i|$
+	\item $p=2:\sqrt{v^Hv}=\sqrt{\sum x_i^2}$
+	\item $p=\infty:\lim_{p\to\infty}\norm{v}_p=\max\{|x_i|\}$
+\end{enumerate}
+注意2-范数保酉变换。
+\subsection*{线性映射构造范数}
+线性单射$\varphi:V_1\to V_2$，$\norm{\cdot}_{V_2}$为$V_2$上的范数，那么
+$V_1$上定义$\norm{v}_\varphi=\norm{\varphi{v}}_{V_2}$为$V_1$上的范数。
+例如，对矩阵使用拉直变换为列向量后可使用列向量的2-范数定义矩阵的Frobenius范数。
+\subsection*{范数等价}
+有限维空间中序列是否为Cauchy列与范数选取无关。
+$\exists c_1,c_2>0,\forall v\in V \norm{v}_\alpha\leq c_1 \norm{v}_\beta,\norm{v}_\beta\leq c_2 \norm{v}_\alpha$。
+有限维空间中Cauchy列一定收敛，因为可以归结为列向量空间上的$\infty$-范数，也就可以对每个矩阵元素取极限得到整个矩阵的极限。
+\subsection*{线性映射的范数}
+赋范线性空间$(V_2,\norm{\cdot}_\beta),(V_1,\norm{\cdot}_\alpha)$有线性映射$\varphi:V_2\to V_1$，
+定义$\norm{\varphi(v)}_{\alpha,\beta}=\sup_{v\neq\theta}\frac{\norm{\varphi(v)_\alpha}}{\norm{v}_\beta}=\max_{\norm{v}_\beta=1}\norm{\varphi(v)}_\alpha$，
+相当于最大缩放比。$\norm{\varphi(v)}_{\alpha,\beta}$是$(\varphi:V_2\to V_1)$上的范数。
+称$\norm{\varphi(v)}_\alpha\leq \norm{\varphi}_{\alpha,\beta}\norm{v}_\beta$为相容性条件。
+次乘性：若$\psi:(V_3,\norm{\cdot}_\gamma)\to (V_2,\norm{\cdot}_\beta),\varphi:(V_2,\norm{\cdot}_\beta)\to(V_1,\norm{\cdot}_\alpha)$，
+则$\norm{\psi\circ\varphi}_{\alpha,\beta}\leq\norm{\varphi}_{\alpha,\beta}\cdot\norm{\psi}_{\beta,\alpha}$
+\subsection*{常用矩阵范数}
+\begin{enumerate}
+	\item 列向量1-范数的诱导范数（列和范数）$\norm{A^{m\times n}}_{1,1}=\max\limits_{\norm{x}_1=1}\norm{Ax}_1=\max\limits_{1\leq i\leq n}\sum\limits_{i=1}^m|a_{ij}|$
+	\item 列向量2-范数的诱导范数（谱范数）$\norm{A^{m\times n}}_{2,2}=\max\sigma$，SVD可证。
+	\item 列向量$\infty$-范数的诱导范数（行和范数）$\norm{A^{m\times n}}_{\infty,\infty}=\max\limits_{1\leq i\leq m}\sum\limits_{j=1}^n|a_{ij}|$
+	\item $m_1$范数，矩阵拉直为列向量后取1-范数 $\norm{A^{m\times n}}_{m_1}=\sum\sum|a_{ij}|$
+	\item Frobenius范数，矩阵拉直为列向量后取2-范数\\ $\norm{A^{m\times n}}_F=\sqrt{\iproduct{A,A}_F}=\sqrt{tr(A^HA)}=\sqrt{\sum\sigma_i^2}$
+	\item $m_{\infty}$范数，矩阵拉直为列向量后取$\infty$-范数再乘矩阵尺寸\\ $\norm{A^{m\times n}}_{m_\infty}=\max\{m,n\}\max\limits_{i,j}|a_ij|$
+\end{enumerate}
+\subsection*{谱半径估计}
+谱半径$\rho(A)$是$A$全部特征值绝对值中的最大值。
+$\rho(A)\leq\norm{A}$，计算$Ax=x\lambda$范数可知。
+$\rho(A)\geq\norm{A}+\epsilon$，证明思路为对$A$用Jordan，令$Q=diag(1,\epsilon,\epsilon^2\dots)$，
+$A$的范数$\norm{Q^{-1}P^{-1}APQ}_{\infty,\infty}$满足条件。
+因此$\rho(A)\leq 1\iff \exists \norm{\cdot}_*, \norm{A}_*\leq_1$。
+\subsection*{矩阵幂收敛条件}
+$\norm{A}\leq 1\Rightarrow k\to\infty, 0\leq \norm{A^k-0} = \norm{A^k}\leq \norm{A}^k = 0\Rightarrow \lim_{k\to\infty}A^k=0$
