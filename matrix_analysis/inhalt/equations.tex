@@ -1,8 +1,21 @@
 \section{矩阵方程}
 \subsection*{方程的有解性}
-\subsection*{解的唯一性}
+\begin{enumerate}
+	\item $rank(A,\beta)=rank(A)$
+	\item $\beta$在A像空间内
+\end{enumerate}
+若要对$\forall\beta$有解，$x\to Ax$是线性满射，行满秩$rankA=m$。
+\subsection*{至多有一个解}
+$x\to Ax$是线性满射，列满秩$rankA=n$，$A$各列线性无关。
 \subsection*{左逆、右逆}
-\subsection*{同解变换}
+对于$A\in \mathbb{C}^{m\times n}$：
+\begin{enumerate}
+	\item $\exists G\in\mathbb{C}^{n\times m},AG=I_{m}\iff rankA =m$
+	\item $\exists H\in\mathbb{C}^{n\times m},HA=I_{n}\iff rankA =n$
+	\item 构造$HAG$可由1、2导出$\exists G,H,AG=I_{m},GA=I_n\iff rankA =m=n$
+\end{enumerate}
+1、2显然等价。要证明1，注意到$m\geq rankA\geq rank(AG)=rankI_m=m$得充分性，
+若$rankA=m$，$Ax=I$有解，解即为$G$，必要性得证。
 \subsection*{广义逆（m-p逆，伪逆）}
 $G=A^\dagger$满足
 \begin{tasks}(2)
@@ -21,4 +34,39 @@ $G=A^\dagger$满足
 设满秩分解$A^{m\times n}=F^{m\times r}G^{r\times n}$，
 则$A^{\dagger}=G^H(GG^H)^{-1}(F^HF)^{-1}F^{H}$，正确性通过代入定义验证。
 \subsection*{最小二乘解}
+对$Ax\approx \beta$，记$A^\dagger=G,x_0=G\beta,\gamma=\beta-Ax_0=(I-AG)\beta$，
+$\beta=Ax_0+\gamma$由$Image(AG)$与$Image(I-AG)$组合得到，
+全部最小二乘解$z=x_0+(I-GA)y_0,y_0\in\mathbb{C}^n$。
+计算可知$Ax_0\perp\gamma$，于是$\norm{\gamma}_F=\min\norm{\beta-Ax}_F$。
+$x_0G\beta$是极小范数的最小二乘解。
 \subsection*{最小范数解}
+对$Ax= \beta$，记$A^\dagger=G,x_0=G\beta$，
+取解$\xi$，$GA(x_0-\xi)=0$，$\xi=\xi-x_0+x_0$由$Image(I-GA)$与$Image(GA)$组合得到，
+通解$z=x_0+(I-GA)y_0,y_0\in\mathbb{C}^n$。
+计算可知$(I-GA)\delta \perp GA\delta$，于是$\norm{x_0}_F=\min\limits_{Ax=\beta}\norm{x}_F$
+
+\section{例：$AX-XB=C$的研究}
+\subsection*{尺寸}
+方程尺寸由$X\in\mathbb{C}^{m\times n}$唯一确定。
+\subsection*{解的研究}
+$\varphi: X\to AX-XB$是线性算子，拉直得到其矩阵表示尺寸为$mn\times mn$。
+若$\forall C,\exists X,AX-XB=C$，那么$\varphi$是满射，作为方阵行列同时满秩，$\varphi$亦是单射，$ker\varphi=\{0\}$，$AX-XB=0$只有零解。
+设$A,B$有公共特征值$\mu\in\mathbb{C}$，取特征向量$A\alpha=\alpha\mu,B^T\beta=\beta\mu$，令$x_0=\alpha\beta^T$可证明是$AX-XB=0$的一个非零解。
+若$A,B$无公共特征值，取$\varphi_1:X\to AX,\varphi_2: X\to BX,\varphi=\varphi_1-\varphi_2$。
+求$\varphi_1$和$\varphi_2$的矩阵表示，在$m=2,n=3$时$\varphi$的矩阵表示$L=A\otimes I_3- I_2\otimes B$，
+取$A,B$为对应阶Jordan块计算$\det (L)$可知非零，$AX-XB=0$只有零解。对原方程配Jordan标准型可发现一般情况仍然成立。
+\subsection*{应用}
+$AX-XB=C$有解$\Rightarrow$\[ \exists X,\begin{psmallmatrix}
+		I&X\\O&I
+	\end{psmallmatrix}\begin{psmallmatrix}
+		A&C\\O&B
+	\end{psmallmatrix}\begin{psmallmatrix}
+		I&-X\\O&I
+	\end{psmallmatrix}=\begin{psmallmatrix}
+		A&C-(AX-XB)=O\\O&B
+	\end{psmallmatrix}\]即$\begin{psmallmatrix}
+		A&C\\O&B
+	\end{psmallmatrix}\sim
+	\begin{psmallmatrix}
+		A&O\\O&B
+	\end{psmallmatrix}$。

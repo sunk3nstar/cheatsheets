@@ -1,2 +1,24 @@
 \section{杂项}
 \subsection*{数列}
+构造合适的线性变换求矩阵的高次幂得到通项。
+如$a_{n+2}+2a_n=3a_{n+1}+2^n$转换为
+\[
+	\begin{psmallmatrix}
+		a_{n+2}\\a_{n+1}\\2^{n+1}
+	\end{psmallmatrix}=
+	\begin{psmallmatrix}
+		3&-2&1\\1&0&0\\0&0&2
+	\end{psmallmatrix}	\begin{psmallmatrix}
+		a_{n+1}\\a_n\\2^n
+	\end{psmallmatrix}
+\]
+\subsection*{一个$e^{At}$的例子}
+$A$的特征多项式$p(x)=(x+2)(x-2)(x-1)^2$，
+$f(x)=e^{xt}=q(x)p(x)+c_0+c_1x+c_2x^2+c_3x^3$，
+代入$f(-2),f(2),f(1)$和$f'(1)=(te^{xt})|_{x=1}=te^t=c_1+c_2+c_3$求解。
+\subsection*{关于$A^HA$和$AA^H$}
+\begin{enumerate}
+	\item $rankA^HA=rankAA^H=rankA$，一方面$Ax=0$显然$A^HAx=0$，另一方面$A^HAx=0$时$x^HA^HAx=0,\norm{Ax}^2=0$，因此$Ax=0$；而$rankAA^H=rankA^H=rankA$。
+	\item $A^HA$和$AA^H$特征值全为非负实数，它们都是正规矩阵，在$x^HA^HAx=\norm{Ax}^2>0$中对$A^HA$用Schur可证。
+	\item $A^HA$与$AA^H$的特征值相同，零时显然，非零时$A^HAx=x\lambda\Rightarrow A(A^HAx)=(Ax)\lambda$，$A^HA$的特征值全为$AA^H$的特征值，反之类似。
+\end{enumerate}
